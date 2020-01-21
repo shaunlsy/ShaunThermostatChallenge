@@ -13,21 +13,27 @@ Thermostat.prototype.getCurrentTemp = function() {
   return this.temp;
 };
 
-Thermostat.prototype.up = function(degrees) {
-  if (this.temp + degrees > this.maxTemp) {
+Thermostat.prototype.up = function() {
+  if (this.isMaxTemp()) {
     throw new Error("Over Max Temp");
-  } else {
-    this.temp += degrees;
-  }
+  } 
+    this.temp += 1;
 };
 
-Thermostat.prototype.down = function(degrees) {
-  if (this.temp - degrees < this.minTemp) {
+Thermostat.prototype.down = function() {
+  if (this.isMinTemp()) {
     throw new Error("Min Temp is reached");
-  } else {
-    this.temp -= degrees;
-  }
+  } 
+    this.temp -= 1;
 };
+
+Thermostat.prototype.isMinTemp = function() {
+  return this.temp === this.minTemp;
+};
+
+Thermostat.prototype.isMaxTemp = function() {
+  return this.temp === this.maxTemp;
+}
 
 Thermostat.prototype.powerSavingMode = function(status = "On") {
   if (status === "On") {

@@ -12,33 +12,40 @@ describe("Thermostat", function() {
   });
 
   it("temperature can increase with up function", function() {
-    thermostat.up(5);
-    expect(thermostat.getCurrentTemp()).toEqual(25);
+    thermostat.up();
+    expect(thermostat.getCurrentTemp()).toEqual(21);
   });
 
-  it("temperature can decrease with down function", function() {
-    thermostat.down(5);
-    expect(thermostat.getCurrentTemp()).toEqual(15);
-  });
+  describe("#down", function() {
+    it("temperature can decrease with down function", function() {
+      thermostat.down();
+      expect(thermostat.getCurrentTemp()).toEqual(19);
+    });
 
-  it("temperature can increase and decrease", function() {
-    thermostat.up(5);
-    thermostat.down(10);
-    expect(thermostat.getCurrentTemp()).toEqual(15);
+    it("temperature can decrease multiple degrees with down function", function() {
+      for (var i = 0; i < 5; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.getCurrentTemp()).toEqual(15);
+    });
   });
 
   describe("Maximum temperature", function() {
     it("raises an error when the temperature is higher than 25", function() {
       thermostat.powerSavingMode("On");
       expect(function() {
-        thermostat.up(6);
+        for (var i = 0; i < 6; i++) {
+          thermostat.up();
+        };
       }).toThrowError("Over Max Temp");
     });
 
     it("raises an error when the temperature is higher than 32", function() {
       thermostat.powerSavingMode("Off");
       expect(function() {
-        thermostat.up(13);
+        for (var i = 0; i < 13; i++) {
+          thermostat.up();
+        };
       }).toThrowError("Over Max Temp");
     });
   });
@@ -50,7 +57,9 @@ describe("Thermostat", function() {
 
     it("raises an error when the temperature is lower than the minTemp", function() {
       expect(function() {
-        thermostat.down(11);
+        for (var i = 0; i < 11; i++) {
+          thermostat.down();
+        };
       }).toThrowError("Min Temp is reached");
     });
   });
@@ -78,7 +87,9 @@ describe("Thermostat", function() {
     });
 
     it("You can increase temp and reset temp to 20", function() {
-      thermostat.up(5);
+      for (var i = 0; i < 5; i++) {
+        thermostat.up();
+      };
       thermostat.reset();
       expect(thermostat.getCurrentTemp()).toEqual(20);
     });
@@ -90,13 +101,17 @@ describe("Thermostat", function() {
     });
 
     it("returns 'low-usage' when temp is < 18", function() {
-      thermostat.down(5);
+      for (var i = 0; i < 5; i++) {
+        thermostat.down();
+      };
       expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
     });
 
     it("returns 'high-usage' when temp is > 25", function() {
       thermostat.powerSavingMode("Off");
-      thermostat.up(10);
+      for (var i = 0; i < 10; i++) {
+        thermostat.up();
+      };
       expect(thermostat.currentEnergyUsage()).toEqual("high-usage");
     });
   });
