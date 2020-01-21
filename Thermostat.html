@@ -1,16 +1,36 @@
 <!DOCTYPE html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link type='text/css' rel='stylesheet' href='/css/style.css'>
+    <title>Thermostat</title>
+    <link type='text/css' rel='stylesheet' href='/public/css/style.css'>
   </head>
   <body>
-    <script src="src/Thermostat.js"></script>
 
-    <form>
-      <input type="submit" value="Up" />
-      <input type="submit" value="Down" />
-      <input type="submit" value="" />
-    </form>
+    <div id="current-temp">
+      <div id="current-temp-header">
+        CURRENT TEMP
+      </div>
+      <div id="current-temp-display">
+        temp goes here
+        <!---INSERT CURRENT TEMP JS-->
+      </div>
+    </div>
+
+    <button id="temp-up">+</button>
+    <button id="temp-down">-</button>
+    <button id="temp-reset">Reset</button>
+
+    <div id="power-saving-mode">
+      <div id="power-saving-mode-header">
+        Power Saving Mode:
+    </div>
+
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider round"></span>
+    </label>
+  </div>
+    <h4>Current Energy Usage</h4>
+    <!---INSERT CURRENT TEMP-->
+    <script src="src/Thermostat.js"></script>
   </body>
 </html>
