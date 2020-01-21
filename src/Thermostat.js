@@ -1,3 +1,5 @@
+"use strict";
+
 const MINTEMP = 10;
 
 function Thermostat() {
@@ -6,6 +8,10 @@ function Thermostat() {
   this.maxTemp;
   this.powerSavingMode("On");
 }
+
+Thermostat.prototype.getCurrentTemp = function() {
+  return this.temp;
+};
 
 Thermostat.prototype.up = function(degrees) {
   if (this.temp + degrees > this.maxTemp) {

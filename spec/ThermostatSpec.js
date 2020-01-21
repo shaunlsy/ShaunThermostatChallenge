@@ -1,3 +1,5 @@
+"use strict";
+
 describe("Thermostat", function() {
   var thermostat;
 
@@ -6,23 +8,23 @@ describe("Thermostat", function() {
   });
 
   it("starts at 20 degrees", function() {
-    expect(thermostat.temp).toEqual(20);
+    expect(thermostat.getCurrentTemp()).toEqual(20);
   });
 
   it("temperature can increase with up function", function() {
     thermostat.up(5);
-    expect(thermostat.temp).toEqual(25);
+    expect(thermostat.getCurrentTemp()).toEqual(25);
   });
 
   it("temperature can decrease with down function", function() {
     thermostat.down(5);
-    expect(thermostat.temp).toEqual(15);
+    expect(thermostat.getCurrentTemp()).toEqual(15);
   });
 
   it("temperature can increase and decrease", function() {
     thermostat.up(5);
     thermostat.down(10);
-    expect(thermostat.temp).toEqual(15);
+    expect(thermostat.getCurrentTemp()).toEqual(15);
   });
 
   describe("Maximum temperature", function() {
@@ -72,13 +74,13 @@ describe("Thermostat", function() {
   describe("Reset temperature", function() {
     it("You can reset temp to 20 with reset function", function() {
       thermostat.reset();
-      expect(thermostat.temp).toEqual(20);
+      expect(thermostat.getCurrentTemp()).toEqual(20);
     });
 
     it("You can increase temp and reset temp to 20", function() {
       thermostat.up(5);
       thermostat.reset();
-      expect(thermostat.temp).toEqual(20);
+      expect(thermostat.getCurrentTemp()).toEqual(20);
     });
   });
 
