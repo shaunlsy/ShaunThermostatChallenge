@@ -20,9 +20,25 @@ describe("Thermostat", function() {
   });
 
   it("temperature can increase and decrease", function() {
-    thermostat.up(10);
-    thermostat.down(5);
-    expect(thermostat.temp).toEqual(25);
+    thermostat.up(5);
+    thermostat.down(10);
+    expect(thermostat.temp).toEqual(15);
+  });
+
+  describe("Maximum temperature", function() {
+    it("raises an error when the temperature is higher than 25", function() {
+      thermostat.powerSavingMode("On");
+      expect(function() {
+        thermostat.up(6);
+      }).toThrowError("Over Max Temp");
+    });
+
+    it("raises an error when the temperature is higher than 32", function() {
+      thermostat.powerSavingMode("Off");
+      expect(function() {
+        thermostat.up(13);
+      }).toThrowError("Over Max Temp");
+    });
   });
 
   describe("Minimum temperature", function() {
@@ -60,7 +76,7 @@ describe("Thermostat", function() {
     });
 
     it("You can increase temp and reset temp to 20", function() {
-      thermostat.up(10);
+      thermostat.up(5);
       thermostat.reset();
       expect(thermostat.temp).toEqual(20);
     });
@@ -77,6 +93,7 @@ describe("Thermostat", function() {
     });
 
     it("returns 'high-usage' when temp is > 25", function() {
+      thermostat.powerSavingMode("Off");
       thermostat.up(10);
       expect(thermostat.currentEnergyUsage()).toEqual("high-usage");
     });

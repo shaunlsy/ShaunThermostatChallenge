@@ -8,7 +8,11 @@ function Thermostat() {
 }
 
 Thermostat.prototype.up = function(degrees) {
-  this.temp += degrees;
+  if (this.temp + degrees > this.maxTemp) {
+    throw new Error("Over Max Temp");
+  } else {
+    this.temp += degrees;
+  }
 };
 
 Thermostat.prototype.down = function(degrees) {
