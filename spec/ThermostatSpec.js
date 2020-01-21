@@ -15,8 +15,8 @@ describe("Thermostat", function() {
   });
 
   it("temperature can decrease with down function", function() {
-    thermostat.down(10);
-    expect(thermostat.temp).toEqual(10);
+    thermostat.down(5);
+    expect(thermostat.temp).toEqual(15);
   });
 
   it("temperature can increase and decrease", function() {
@@ -25,8 +25,16 @@ describe("Thermostat", function() {
     expect(thermostat.temp).toEqual(25);
   });
 
-  it("has a minimum temperature of 10", function() {
-    expect(thermostat.minTemp).toEqual(10);
+  describe("Minimum temperature", function() {
+    it("has a minimum temperature of 10", function() {
+      expect(thermostat.minTemp).toEqual(10);
+    });
+
+    it("raises an error when the temperature is lower than the minTemp", function() {
+      expect(function() {
+        thermostat.down(11);
+      }).toThrowError("Min Temp is reached");
+    });
   });
 
   describe("Power saving mode", function() {
@@ -56,7 +64,7 @@ describe("Thermostat", function() {
       thermostat.reset();
       expect(thermostat.temp).toEqual(20);
     });
-  }); 
+  });
 
   describe("Current energy usage", function() {
     it("returns 'medium-usage' when temp is < 25", function() {

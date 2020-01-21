@@ -12,7 +12,11 @@ Thermostat.prototype.up = function(degrees) {
 };
 
 Thermostat.prototype.down = function(degrees) {
-  this.temp -= degrees;
+  if (this.temp - degrees < this.minTemp) {
+    throw new Error("Min Temp is reached");
+  } else {
+    this.temp -= degrees;
+  }
 };
 
 Thermostat.prototype.powerSavingMode = function(status = "On") {
@@ -21,7 +25,7 @@ Thermostat.prototype.powerSavingMode = function(status = "On") {
   } else if (status === "Off") {
     this._setMaxTemp(32);
   }
-  return status
+  return status;
 };
 
 Thermostat.prototype.reset = function() {
@@ -37,7 +41,6 @@ Thermostat.prototype.currentEnergyUsage = function() {
     return "high-usage";
   }
 };
-
 
 Thermostat.prototype._setMaxTemp = function(degrees) {
   this.maxTemp = degrees;
