@@ -39,5 +39,38 @@ describe("Thermostat", function() {
       thermostat.powerSavingMode("Off");
       expect(thermostat.maxTemp).toEqual(32);
     });
+
+    it("is on by deafult", function() {
+      expect(thermostat.maxTemp).toEqual(25);
+    });
+  });
+
+  describe("Reset temperature", function() {
+    it("You can reset temp to 20 with reset function", function() {
+      thermostat.reset();
+      expect(thermostat.temp).toEqual(20);
+    });
+
+    it("You can increase temp and reset temp to 20", function() {
+      thermostat.up(10);
+      thermostat.reset();
+      expect(thermostat.temp).toEqual(20);
+    });
+  }); 
+
+  describe("Current energy usage", function() {
+    it("returns 'medium-usage' when temp is < 25", function() {
+      expect(thermostat.currentEnergyUsage()).toEqual("medium-usage");
+    });
+
+    it("returns 'low-usage' when temp is < 18", function() {
+      thermostat.down(5);
+      expect(thermostat.currentEnergyUsage()).toEqual("low-usage");
+    });
+
+    it("returns 'high-usage' when temp is > 25", function() {
+      thermostat.up(10);
+      expect(thermostat.currentEnergyUsage()).toEqual("high-usage");
+    });
   });
 });
