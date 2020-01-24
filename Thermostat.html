@@ -1,40 +1,70 @@
 <!DOCTYPE html>
-  <head>
+
+<head>
     <script src="jquery-3.4.1.min.js"></script>
     <script src="jquery-3.4.1.js"></script>
 
     <title>Thermostat</title>
-    <link type='text/css' rel='stylesheet' href='/thermostat/public/css/style.css'>  
+    <link type='text/css' rel='stylesheet' href='/meghan-thermostat-challenge/thermostat/public/css/style.css'>
     <!-- Shaun's starts from thermostat instead of public -->
-  </head>
-  <body>
-    <div id="current-temp">
-      <div id="current-temp-header">
-        CURRENT TEMP
-      </div>
-      <div id="current-temp-display">
-        temp goes here
-        <!---INSERT CURRENT TEMP JS-->
-      </div>
+</head>
+
+<body>
+    <img src="https://www.countryflags.io/:country_code/:style/:size.png">
+    <img src="https://www.countryflags.io/be/flat/64.png">
+    <div class="row">
+        <div class="left-column">
+            <section>
+                <h1>
+                    <div id="current-city-header">Current City:
+                        <span id="city"></span>
+                    </div>
+                </h1>
+                <h2>
+                    <div id="city-temp-header">Current Temperature:
+                        <span id="city-temp-display"></span>
+                    </div>
+                </h2>
+                <div id="pick-city-header">
+                    <h2>Enter a city:</h2>
+                    <form id="select-city">
+                        <input id="current-city" type="text" placeholder="Enter a city"></input>
+                        <input type="submit" value="Submit"></input>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div class="right-column">
+            <section>
+                <div id="current-temp">
+                    <div id="current-temp-header">
+                        CURRENT TEMPERATURE
+                    </div>
+                    <div id="current-temp-display">
+                        <!-- getCurrentTemp goes here -->
+                        <!---INSERT CURRENT TEMP JS-->
+                    </div>
+                </div>
+                <button id="temp-up">+</button>
+                <button id="temp-down">-</button>
+                <div><button id="temp-reset">Reset</button></div>
+                <div id="power-saving-mode">
+                    <div id="power-saving-mode-header">
+                        Power Saving Mode:
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                <h4>Current Energy Usage</h4>
+                <!---INSERT CURRENT TEMP-->
+                <script src="src/Thermostat.js"></script>
+                <script src="src/interface.js"></script>
+            </section>
+        </div>
     </div>
 
-    <button id="temp-up">+</button>
-    <button id="temp-down">-</button>
-    <button id="temp-reset">Reset</button>
+</body>
 
-    <div id="power-saving-mode">
-      <div id="power-saving-mode-header">
-        Power Saving Mode:
-    </div>
-
-    <label class="switch">
-      <input type="checkbox" checked>
-      <span class="slider round"></span>
-    </label>
-  </div>
-    <h4>Current Energy Usage</h4>
-    <!---INSERT CURRENT TEMP-->
-    <script src="src/Thermostat.js"></script>
-    <script src="src/interface.js"></script>
-  </body>
 </html>

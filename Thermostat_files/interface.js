@@ -12,14 +12,14 @@ $(document).ready(function() {
         var token = "&appid=9c4f3f161177d59178b177a4f58243bc";
         var units = "&units=metric";
         $.get(url + token + units, function(data) {
-            $("#city-temp-display").text(data.main.temp + "°C");
+            $("city-temp-display").text(data.main.temp);
         });
     }
     $("#select-city").submit(function(event) {
         event.preventDefault();
-        var city = $("#current-city").val();
+        var city = $("current-city").val();
         displayWeather(city);
-        $("#city").text(city);
+        $("city").text(city);
     });
 
     $("#temp-up").on("click", function() {

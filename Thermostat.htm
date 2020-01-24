@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)http://127.0.0.1:5500/meghan-thermostat-challenge/thermostat/Thermostat.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="./Thermostat_files/jquery-3.4.1.min.js"></script>
+    <script src="./Thermostat_files/jquery-3.4.1.js"></script>
+
+    <title>Thermostat</title>
+    <link type="text/css" rel="stylesheet" href="./Thermostat_files/style.css">
+    <!-- Shaun's starts from thermostat instead of public -->
+</head>
+
+<body data-gr-c-s-loaded="true"><div id="i4c-draggable-container" style="position: fixed; z-index: 1499; width: 0px; height: 0px;"><div data-reactroot="" class="resolved" style="all: initial;"></div></div>
+    <section>
+        <h1>
+            <div id="current-city-header">Current City:</div>
+        </h1>
+        <span id="city"></span>
+        <h2>
+            <div id="city-temp-header">Current Temperature:</div>
+        </h2>
+        <span id="city-temp-display"></span>
+        <input id="select-city">
+        <input id="current-city" type="text" placeholder="Enter a city">
+        <input type="submit" value="Viola!">
+        
+    </section>
+    <div id="current-temp">
+        <div id="current-temp-header">
+            CURRENT TEMPERATURE
+        </div>
+        <div id="current-temp-display" class="medium-usage">20</div>
+    </div>
+
+    <button id="temp-up">+</button>
+    <button id="temp-down">-</button>
+    <button id="temp-reset">Reset</button>
+
+    <div id="power-saving-mode">
+        <div id="power-saving-mode-header">
+            Power Saving Mode:
+        </div>
+
+        <label class="switch">
+      <input type="checkbox" checked="">
+      <span class="slider round"></span>
+    </label>
+    </div>
+    <h4>Current Energy Usage</h4>
+    <!---INSERT CURRENT TEMP-->
+    <script src="./Thermostat_files/Thermostat.js"></script>
+    <script src="./Thermostat_files/interface.js"></script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<div id="i4c-dialogs-container"></div></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

@@ -1,13 +1,16 @@
 html,
 body {
     height: 100%;
-    width: 100%;
-    font-weight: 1000;
-    background-image: url("https://media3.giphy.com/media/PlgZiX7xo0NdiR8489/source.gif");
+    font-weight: 800;
 }
 
 body {
     text-align: center;
+}
+
+#current-temp-header {
+    font-size: 50px;
+    color: #2196f3;
 }
 
 .switch {
@@ -75,7 +78,7 @@ button {
     color: white;
     padding: 15px 15px;
     margin: 15px 2px;
-    transition-duration: 0.5s;
+    transition-duration: 0.4s;
     font-size: 20px;
 }
 
@@ -84,18 +87,12 @@ button:hover {
     color: white;
 }
 
-#current-temp-header {
-    font-size: 30px;
-    color: #2196f3;
-}
-
 #current-temp-display {
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     margin: auto;
-    font-size: 100px;
-    font-style: italic;
+    font-size: large;
 }
 
 #power-saving-mode {
@@ -112,30 +109,4 @@ button:hover {
 
 .high-usage {
     color: red;
-}
-
-
-/* Create two equal columns that floats next to each other */
-
-.left-column {
-    float: left;
-    flex: 50%;
-    width: 100%;
-    padding: 10px;
-    height: 100%;
-}
-
-.right-column {
-    float: right;
-    flex: 50%;
-    width: 100%;
-    padding: 10px;
-    height: 100%;
-}
-
-
-/* Clear floats after the columns */
-
-.row {
-    display: flex;
 }
